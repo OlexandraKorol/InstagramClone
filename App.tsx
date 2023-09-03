@@ -9,24 +9,19 @@
  */
 
 import React from 'react';
-import { Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { colors } from './src/theme/colors';
-import Entypo from 'react-native-vector-icons/Entypo'
-import { weight } from'./src/theme/fonts'
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import FeedPost from './src/components/FeedPost';
+
+import post from './src/data/post'
+
+
 
 const App = () => {
       return(
         <SafeAreaView style={styles.container}>
           <ScrollView>
-            <FeedPost />
-            <FeedPost />
-            <FeedPost />
-            <FeedPost />
-            <FeedPost />
+            <FeedPost post={post}/>
+
           </ScrollView>
         </SafeAreaView>
       )
