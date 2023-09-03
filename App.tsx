@@ -10,11 +10,9 @@
 
 import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import FeedPost from './src/components/FeedPost';
+import {FeedPost} from './src/components/FeedPost';
 
 import post from './src/data/post'
-
-
 
 const App = () => {
       return(

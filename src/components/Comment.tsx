@@ -14,7 +14,7 @@ export const Comment = memo<ICommentProps>(({ comment }) => {
     <View style={styles.comment}>
       <Text style={styles.text}>
         <Text style={styles.bold}>
-          {comment.user}{' '}
+         {comment.username}
         </Text>
 
         <Text style={styles.text}>
@@ -29,8 +29,9 @@ export const Comment = memo<ICommentProps>(({ comment }) => {
 
 const styles = StyleSheet.create({
   icon: {
-    marginHorizontal: 5,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginLeft:'auto',
+    paddingLeft: 5
   },
   text: {
     color: colors.black,
@@ -39,9 +40,6 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: weight.bold,
-  },
-  threeDots: {
-    marginLeft: 'auto'
   },
   comment:{
     flexDirection: 'row',

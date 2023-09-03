@@ -6,7 +6,7 @@ import { weight } from '../../src/theme/fonts'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import Comment from './Comment';
+import {Comment} from './Comment';
 import { IPost } from '../types/models';
 
 interface IFeedPostProps {
@@ -82,7 +82,7 @@ export const FeedPost = memo<IFeedPostProps>(({post}) => {
 
             {/* Post description */}
             <Text style={styles.text} >
-              <Text style={styles.bold}>{post.user.name}</Text>
+              <Text style={styles.bold}>{post.user.username}{' '}</Text>
               {post.description}
             </Text>
 
@@ -159,6 +159,4 @@ const styles = StyleSheet.create({
   }
 
 })
-
-export FeedPost
 

@@ -13,7 +13,7 @@ export interface IPost {
 
 export interface IUser {
   id: string,
-  username: string,
+  username?: string,
   image?: string,
   name?: string,
   bio?: string,
@@ -24,5 +24,5 @@ export interface IUser {
 export interface IComment {
   id: string,
   comment: string,
-  user: string
+  username: string
 }
