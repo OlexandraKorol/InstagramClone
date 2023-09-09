@@ -8,6 +8,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Comment} from './Comment';
 import { IPost } from '../types/models';
+import { DoublePressable } from './DoublePressable';
 
 interface IFeedPostProps {
   post: IPost
@@ -44,12 +45,14 @@ export const FeedPost = memo<IFeedPostProps>(({post}) => {
     
           {/* Content */}
           <View style={styles.iconContainer}>
-            <Image 
-            source={{
-              uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg'
-            }} 
-            style={styles.image}
-            />
+            <DoublePressable onDoublePress={onHandlerIsLiked}>
+              <Image 
+              source={{
+                uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg'
+              }} 
+              style={styles.image}
+              />
+            </DoublePressable>
           </View>
     
           {/* Footer */}
