@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
-import {  Image, SafeAreaView,  StyleSheet, Text, View } from 'react-native';
+import React, { memo, useState } from 'react';
+import {  Image, Pressable, SafeAreaView,  StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../src/theme/colors';
 import Entypo from 'react-native-vector-icons/Entypo'
-import { weight } from '../../src/theme/fonts'
+import { size, weight } from '../../src/theme/fonts'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -15,7 +15,16 @@ interface IFeedPostProps {
 
 export const FeedPost = memo<IFeedPostProps>(({post}) => {
 
-  console.log(post);
+  const [isDescpriptionExplained, setIsDescpriptionExplained] = useState(false)
+  const [isLiked, setIsLiked] = useState(false)
+
+  const onHandlerDescriptionOpen = () => {
+    setIsDescpriptionExplained(!isDescpriptionExplained)
+  }
+
+  const onHandlerIsLiked = () => {
+    setIsLiked(!isLiked)
+  }
 
       return (
       <SafeAreaView style={{flex: 1}}>
@@ -46,12 +55,14 @@ export const FeedPost = memo<IFeedPostProps>(({post}) => {
           {/* Footer */}
           <View style={styles.footer}>
             <View style={styles.iconContainer}>
+              <Pressable onPress={onHandlerIsLiked}>
                 <AntDesign
-                  name='heart' // 'hearto'
+                  name={isLiked ? 'heart' : 'hearto'}
                   size={24}
                   style={styles.icon}
-                  color='red'
+                  color={isLiked ? colors.accent : colors.black}
                 />
+              </Pressable>
               <Ionicons
                 name="chatbubble-outline"
                 size={24}
@@ -81,14 +92,18 @@ export const FeedPost = memo<IFeedPostProps>(({post}) => {
               </Text>
 
             {/* Post description */}
-            <Text style={styles.text} >
+            <Text style={styles.text} numberOfLines={isDescpriptionExplained ? 0 : 2}>
               <Text style={styles.bold}>{post.user.username}{' '}</Text>
               {post.description}
             </Text>
 
+            <Text onPress={onHandlerDescriptionOpen}  style={styles.grayText}>
+              {isDescpriptionExplained ? 'less' : 'more'}
+            </Text>
+
             {/* Comments */}
 
-            <Text style={styles.text}>
+              <Text style={styles.commentText}>
                 View all {post.nofComments} comments 
               </Text>
 
@@ -154,8 +169,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  grayText:{
+    color: colors.gray,
+    fontSize: size.s,
+    marginBottom:5
+  },
   date:{
-    marginVertical:5
+    marginVertical:5,
+    color: colors.gray,
+    fontSize: size.s
+  },
+  commentText:{
+    color: colors.gray,
+    lineHeight: 18,
+    marginBottom: 3
   }
 
 })

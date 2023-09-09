@@ -12,15 +12,13 @@ import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import {FeedPost} from './src/components/FeedPost';
 
-import post from './src/data/post'
+import post from './src/data/post.json'
+import { HomeScreen } from './src/screens/HomeScreen';
 
 const App = () => {
       return(
         <SafeAreaView style={styles.container}>
-          <ScrollView>
-            <FeedPost post={post}/>
-
-          </ScrollView>
+          <HomeScreen />
         </SafeAreaView>
       )
 };
