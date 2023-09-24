@@ -10,12 +10,14 @@ import {Comment} from './Comment';
 import { IPost } from '../types/models';
 import { DoublePressable } from './DoublePressable';
 import { Carousel } from './Carousel';
+import { VideoPlayer } from './VideoPlayer';
 
 interface IFeedPostProps {
   post: IPost
+  isVisible: boolean
 }
 
-export const FeedPost = memo<IFeedPostProps>(({post}) => {
+export const FeedPost = memo<IFeedPostProps>(({post, isVisible}) => {
 
   const [isDescpriptionExplained, setIsDescpriptionExplained] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
@@ -41,6 +43,8 @@ export const FeedPost = memo<IFeedPostProps>(({post}) => {
       )
     } else if (post.images) {
       return (<Carousel images={post.images} />)
+    } else if (post.video) {
+      return (<VideoPlayer uri={post.video} paused={isVisible}/>)
     }
   }
 

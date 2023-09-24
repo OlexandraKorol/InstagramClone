@@ -1,25 +1,25 @@
-import { Pressable, StyleSheet} from 'react-native'
-import React, { Children, ReactNode, memo } from 'react'
+import { Pressable,} from 'react-native'
+import React, { ReactNode, } from 'react'
 
-interface IDoubleBressable {
+interface IDoublePressable {
   onDoublePress: () => void
   children: ReactNode
 }
 
-export const DoublePressable = memo<IDoubleBressable>(({onDoublePress, children}) => {
-  let lastTap = 0
-  const handleDoublePress = () => {
-    const currentTap = Date.now() //value in miliseconds
+export const DoublePressable = ({
+  onDoublePress = () => {},
+  children,
+}: IDoublePressable) => {
+  let lastTap = 0;
 
-    if(currentTap - lastTap < 300) {
-      onDoublePress()
+  const handleDoublePress = () => {
+    const now = Date.now(); 
+    if (now - lastTap < 300) {
+      onDoublePress();
     }
 
-    lastTap = currentTap
-  }
-  return (
-    <Pressable onPress={handleDoublePress}>
-      {children}
-    </Pressable>
-  )
-})
+    lastTap = now;
+  };
+
+  return <Pressable onPress={handleDoublePress}>{children}</Pressable>;
+};
