@@ -10,7 +10,7 @@ export const CommentsScreen = () => {
      <FlatList 
       data={comments}
       renderItem={({item}) => (
-        <Comment comment={item}/>
+        <Comment comment={item} includeDetails/>
       )}
       style={{padding: 10}}
      />

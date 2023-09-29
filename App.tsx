@@ -19,8 +19,8 @@ import { CommentsScreen } from './src/screens/CommentsScreen';
 const App = () => {
       return(
         <SafeAreaView style={styles.container}>
-          {/* <HomeScreen /> */}
-          <CommentsScreen />
+          <HomeScreen />
+          {/* <CommentsScreen /> */}
         </SafeAreaView>
       )
 };

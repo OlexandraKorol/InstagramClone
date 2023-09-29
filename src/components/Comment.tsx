@@ -8,9 +8,10 @@ import { IComment } from '../types/models'
 
 interface ICommentProps {
   comment: IComment
+  includeDetails: boolean 
 }
 
-export const Comment = memo<ICommentProps>(({ comment }) => {
+export const Comment = memo<ICommentProps>(({ comment, includeDetails = false }) => {
   console.log(comment);
   
   const [isLiked, setIsLiked] = useState(false)
@@ -21,7 +22,9 @@ export const Comment = memo<ICommentProps>(({ comment }) => {
 
   return (
     <View style={styles.comment}>
-      <Image source={{uri: comment.user.image}} style={styles.avatar}/>
+     {includeDetails && (
+       <Image source={{uri: comment.user.image}} style={styles.avatar}/>
+     )}
         <View style={styles.middleColumn}>
           <Text style={styles.commentText}>
 
@@ -29,14 +32,17 @@ export const Comment = memo<ICommentProps>(({ comment }) => {
               {comment.comment}
           </Text>
 
-          <View style={styles.footer}> 
-            <Text style={styles.footerText}>ad</Text>
-            <Text style={styles.footerText}>5 likes</Text>
-            <Text style={styles.footerText}>Reply</Text>
-          </View>
+          {includeDetails && (
+            <View style={styles.footer}> 
+              <Text style={styles.footerText}>ad</Text>
+              <Text style={styles.footerText}>5 likes</Text>
+              <Text style={styles.footerText}>Reply</Text>
+            </View>
+          )}
+
         </View>
 
-        <Pressable onPress={commentsIsLiked}>
+        <Pressable onPress={commentsIsLiked} hitSlop={5}>
           <AntDesign 
             name={isLiked ? 'heart' : 'hearto'} 
             size={16} 
@@ -50,15 +56,11 @@ export const Comment = memo<ICommentProps>(({ comment }) => {
 
 const styles = StyleSheet.create({
   icon: {
-    alignSelf: 'center',
-    marginLeft:'auto',
-    paddingLeft: 5
+    marginHorizontal: 5
   },
   commentText:{
     color: colors.black,
-    flex:1,
     lineHeight: 18,
-    marginHorizontal: 7
   },
   bold: {
     fontWeight: weight.bold,
@@ -66,21 +68,23 @@ const styles = StyleSheet.create({
   comment:{
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
   avatar:{
-    width: 50,
+    width: 58,
     aspectRatio: 1,
-    borderRadius: 25
+    borderRadius: 25,
+    marginRight: 5
   },
   footer:{
     flexDirection: 'row',
-    marginBottom: 5
+    marginBottom: 10
   },
   middleColumn:{
     flex:1
   },
   footerText:{
-    marginHorizontal: 5,
+    marginRight: 5,
     color: colors.gray
   }
 })
