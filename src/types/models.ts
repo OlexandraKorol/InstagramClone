@@ -24,5 +24,9 @@ export interface IUser {
 export interface IComment {
   id: string,
   comment: string,
-  username: string
+  user: {
+    id: string,
+    image: string
+    username: string
+  }
 }
