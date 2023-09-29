@@ -1,9 +1,9 @@
-import { Pressable,} from 'react-native'
-import React, { ReactNode, } from 'react'
+import {Pressable} from 'react-native';
+import React, {ReactNode} from 'react';
 
 interface IDoublePressable {
-  onDoublePress: () => void
-  children: ReactNode
+  onDoublePress: () => void;
+  children: ReactNode;
 }
 
 export const DoublePressable = ({
@@ -13,7 +13,7 @@ export const DoublePressable = ({
   let lastTap = 0;
 
   const handleDoublePress = () => {
-    const now = Date.now(); 
+    const now = Date.now();
     if (now - lastTap < 300) {
       onDoublePress();
     }

@@ -1,12 +1,11 @@
-import {  FlatList, ViewToken, ViewabilityConfig } from 'react-native'
-import React, { memo, useRef, useState } from 'react'
+import {FlatList, ViewToken, ViewabilityConfig} from 'react-native';
+import React, {memo, useRef, useState} from 'react';
 
-import posts from '../data/post.json'
-import { FeedPost } from '../components/FeedPost'
+import posts from '../data/post.json';
+import {FeedPost} from '../components/FeedPost';
 
 export const HomeScreen = memo(() => {
-
-  const [activePostId, setActivePostId] = useState<string | null>(null)
+  const [activePostId, setActivePostId] = useState<string | null>(null);
 
   const viewabilityConfig: ViewabilityConfig = {
     itemVisiblePercentThreshold: 51,
@@ -21,13 +20,14 @@ export const HomeScreen = memo(() => {
   );
 
   return (
-    <FlatList 
+    <FlatList
       data={posts}
-      renderItem={({item}) => <FeedPost post={item} isVisible = {activePostId === item.id}/>}
+      renderItem={({item}) => (
+        <FeedPost post={item} isVisible={activePostId === item.id} />
+      )}
       showsVerticalScrollIndicator={false}
       viewabilityConfig={viewabilityConfig}
       onViewableItemsChanged={onViewableItemsChanged.current}
     />
-
-  )
-})
+  );
+});

@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView } from 'react-native'
-import React, { memo } from 'react'
+import {View, Text, SafeAreaView} from 'react-native';
+import React, {memo} from 'react';
 
 export const Modal = memo(() => {
   return (
@@ -8,5 +8,5 @@ export const Modal = memo(() => {
         <Text>modal</Text>
       </View>
     </SafeAreaView>
-  )
-})
+  );
+});
