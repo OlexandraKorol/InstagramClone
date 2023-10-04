@@ -13,14 +13,16 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 // import {FeedPost} from './src/components/FeedPost';
 
 // import post from './src/data/post.json';
-import {HomeScreen} from './src/screens/HomeScreen';
+// import {HomeScreen} from './src/screens/HomeScreen';
+import {ProfileScreen} from './src/screens/ProfileScreen';
 // import {CommentsScreen} from './src/screens/CommentsScreen';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <HomeScreen />
+      {/* <HomeScreen /> */}
       {/* <CommentsScreen /> */}
+      <ProfileScreen />
     </SafeAreaView>
   );
 };
