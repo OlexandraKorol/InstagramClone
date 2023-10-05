@@ -14,7 +14,8 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 
 // import post from './src/data/post.json';
 // import {HomeScreen} from './src/screens/HomeScreen';
-import {ProfileScreen} from './src/screens/ProfileScreen';
+// import {ProfileScreen} from './src/screens/ProfileScreen';
+import {EditProfileScreen} from './src/screens/EditProfileScreen';
 // import {CommentsScreen} from './src/screens/CommentsScreen';
 
 const App = () => {
@@ -22,7 +23,8 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       {/* <HomeScreen /> */}
       {/* <CommentsScreen /> */}
-      <ProfileScreen />
+      <EditProfileScreen />
+      {/* <ProfileScreen /> */}
     </SafeAreaView>
   );
 };
